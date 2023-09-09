@@ -6,17 +6,27 @@ import reportWebVitals from './reportWebVitals';
 import CreateEmployee from './Pages/CreateEmployee';
 import ListEmployee from './Pages/ListEmployee';
 import Header from './Components/Header';
+import { Provider } from 'react-redux';
+import { store } from '../src/utils/store.js'
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+
+let persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-      <Header />
-      <Routes>
-        <Route path='/' element={<CreateEmployee />}/>
-        <Route path='/employees' element={<ListEmployee />}/>
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path='/' element={<CreateEmployee />}/>
+            <Route path='/employees' element={<ListEmployee />}/>
+          </Routes>
+        </Router>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 

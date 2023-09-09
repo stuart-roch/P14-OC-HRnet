@@ -1,10 +1,20 @@
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+//import Modal from '@stuart.roch/modal-component-library'
+import { useSelector } from 'react-redux'
 
 
 export default function CreateEmployee(){
 
     const {register, handleSubmit, formState: { errors } } = useForm()
+    const [openModal, setOpenModal] = useState(false)
+
+    const onSave = (e) => {
+        e.preventDefault()
+        setOpenModal(true)
+        
+    }
 
     return (
         <Container>
@@ -29,11 +39,9 @@ export default function CreateEmployee(){
                         <div className="input-wrapper">
                             <label htmlFor="date-of-birth">Date of Birth</label>
                             <input id="date-of-birth" type="text" />
-                        </div>
-                        
-
-                    
+                        </div>                    
                     </div>
+
                     <div className="employee-address">
                         <label htmlFor="street">Street</label>
                         <input id="street" type="text" />
@@ -65,7 +73,7 @@ export default function CreateEmployee(){
                     </div>
                 </form>
 
-                <button >Save</button>
+                <button onClick={onSave}>Save</button>
             </div>
             
         </Container>
