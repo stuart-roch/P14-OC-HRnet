@@ -4,7 +4,7 @@ import { useState } from 'react'
 import DatePicker from '../../Components/DatePicker'
 import SelectMenu from '../../Components/SelectMenu'
 import { departmentOptions, statesOptions } from "../../utils/variables"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addEmployeeAction } from '../../features/employee'
 import Modal from '@stuart.roch/modal-component-library'
 
@@ -13,17 +13,17 @@ export default function CreateEmployee(){
     const {register, handleSubmit, formState: { errors } } = useForm()
     const [openModal, setOpenModal] = useState(false)
     const [countEmployeeCreated, setCountEmployeeCreated] = useState(0)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()    
 
     const onSubmit = (data) => {
         setOpenModal(true)
-        dispatch(addEmployeeAction({...data, id: countEmployeeCreated}))
-        setCountEmployeeCreated(countEmployeeCreated + 1)
+        //dispatch(addEmployeeAction({...data, id: countEmployeeCreated}))
+        //setCountEmployeeCreated(countEmployeeCreated + 1)
     }
-
+    
     return (
-        <>
-        <Container>
+        
+        <Container openModal={openModal}>
             <div className="form-wrapper">
                 <div className="form-header">
                     <h2>Create an employee</h2>
@@ -90,15 +90,24 @@ export default function CreateEmployee(){
                     
                 </form>
             </div>
-            
+            <StyledModal 
+                modalState={[openModal, setOpenModal]} 
+                className="modal" 
+                closeButtonChild={ <i className='fa fa-times'></i> }
+                closeButtonClassName="modal-close-button"
+                onClose={() => setOpenModal(false)}
+            >
+                Employee Created
+            </StyledModal>
         </Container>
-        <Modal modalState={[openModal, setOpenModal]}></Modal>
-        </>
+        
+        
     )
 }   
 
 const Container = styled.main`
 
+    position: relative;
     background-color: #0074d9;
     flex: 1;
     margin-top: 20px;
@@ -106,6 +115,8 @@ const Container = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: ${({openModal}) => openModal ? 0.3 : 1};
+    
 
     .form-wrapper{
         background-color: white;
@@ -116,6 +127,7 @@ const Container = styled.main`
         display: flex;
         flex-direction: column;
         align-items: center;
+        box-shadow: 2px 2px 10px #D9D9D9;
     }
 
     .form-header{
@@ -167,5 +179,17 @@ const Container = styled.main`
     .input-wrapper, .select-wrapper{
         display: flex;
         flex-direction: column;
+    }
+`
+const StyledModal = styled(Modal)`
+
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+
+    .modal-close-button{
+        border: 1px solid ;
+        background-color: white;
     }
 `
