@@ -6,7 +6,7 @@ import SelectMenu from '../../Components/SelectMenu'
 import { departmentOptions, statesOptions } from "../../utils/variables"
 import { useDispatch } from 'react-redux'
 import { addEmployeeAction } from '../../features/employee'
-//import Modal from '@stuart.roch/modal-component-library'
+import Modal from '@stuart.roch/modal-component-library'
 
 export default function CreateEmployee(){
 
@@ -22,6 +22,7 @@ export default function CreateEmployee(){
     }
 
     return (
+        <>
         <Container>
             <div className="form-wrapper">
                 <div className="form-header">
@@ -91,6 +92,8 @@ export default function CreateEmployee(){
             </div>
             
         </Container>
+        <Modal modalState={[openModal, setOpenModal]}></Modal>
+        </>
     )
 }   
 
