@@ -85,7 +85,7 @@ export default function CreateEmployee(){
                         </div>
                     </div>
                     
-                    <div><button type='submit'>Save</button></div>
+                    <div><button type='submit' className='button-create-employee'>Save</button></div>
                     
                 </form>
             </div>
@@ -117,6 +117,7 @@ const Container = styled.main`
 
     .form-header{
         text-align:center;
+        margin-bottom: 50px;
 
         h2{
             font-size:3rem;
@@ -133,11 +134,35 @@ const Container = styled.main`
         flex-direction: column;
         justify-content:space-between;
         align-items:center;
+        width:100%; 
     }
     
     .form-inputs{
         display:flex;
+        justify-content:space-between;
+        width:100%;
     }
 
-    .input-wrapper
+    .button-create-employee{
+
+        border: 1px solid #77D4FC;
+        border-radius: 100px;
+        background-color: #77D4FC;
+        padding: 5px 20px;
+        margin-top: 25px;
+        font-size: 1rem;
+
+    }
+
+    .button-create-employee:hover{
+        background-color: #0074d9;
+        border: 1px solid #0074d9;
+        color: white;
+        font-weight: bold;
+    }
+
+    .input-wrapper, .select-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
 `
