@@ -1,19 +1,24 @@
 import styled from 'styled-components'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
+import DatePicker from '../../Components/DatePicker'
+import SelectMenu from '../../Components/SelectMenu'
+import { departmentOptions, statesOptions } from "../../utils/variables"
+import { useDispatch } from 'react-redux'
+import { addEmployeeAction } from '../../features/employee'
 //import Modal from '@stuart.roch/modal-component-library'
-import { useSelector } from 'react-redux'
-
 
 export default function CreateEmployee(){
 
     const {register, handleSubmit, formState: { errors } } = useForm()
     const [openModal, setOpenModal] = useState(false)
+    const [countEmployeeCreated, setCountEmployeeCreated] = useState(0)
+    const dispatch = useDispatch()
 
-    const onSave = (e) => {
-        e.preventDefault()
+    const onSubmit = (data) => {
         setOpenModal(true)
-        
+        dispatch(addEmployeeAction({...data, id: countEmployeeCreated}))
+        setCountEmployeeCreated(countEmployeeCreated + 1)
     }
 
     return (
@@ -24,56 +29,65 @@ export default function CreateEmployee(){
                     <i className="fa fa-user-plus"></i>
                 </div>
                 
-                <form action="#" id="create-employee">
-                    <div className="employee-base-informations">
-                        <div className="input-wrapper">
-                            <label htmlFor="first-name">First Name</label>
-                            <input type="text" id="first-name" />
+                <form action="#" id="create-employee" onSubmit={handleSubmit(onSubmit)}>
+                    <div className='form-inputs'>
+                        <div className="employee-base-informations">
+                            <div className="input-wrapper">
+                                <label htmlFor="first-name">First Name</label>
+                                <input type="text" id="first-name" name="first-name" {...register("firstName")}/>
+                            </div>
+
+                            <div className="input-wrapper">
+                                <label htmlFor="last-name">Last Name</label>
+                                <input type="text" id="last-name" name="last-name" {...register("lastName")}/>
+                            </div>
+                            
+                            <div className="input-wrapper">
+                                <label htmlFor="date-of-birth">Date of Birth</label>
+                                <DatePicker name="date-of-birth" id="date-of-birth" register = {register("dateOfBirth")}/>
+                            </div>                    
                         </div>
 
-                        <div className="input-wrapper">
-                            <label htmlFor="last-name">Last Name</label>
-                            <input type="text" id="last-name" />
+                        <div className="employee-address">
+                            <div className="input-wrapper">
+                                <label htmlFor="street">Street</label>
+                                <input id="street" name="street" type="text" {...register("street")}/>
+                            </div>
+                            
+                            <div className="input-wrapper">
+                                <label htmlFor="city">City</label>
+                                <input id="city" name="city" type="text" {...register("city")}/>
+                            </div>
+                            
+                            <div className="select-wrapper">
+                                <label htmlFor="state">State</label>
+                                <SelectMenu options={statesOptions} id="state" name="state" register={register("state")}/>
+                            </div>
+                            
+                            <div className="input-wrapper">
+                                <label htmlFor="zip-code">Zip Code</label>
+                                <input id="zip-code" name="zip-code" type="number" {...register("zipCode")}/>
+                            </div>
+                            
                         </div>
-                        
-                        <div className="input-wrapper">
-                            <label htmlFor="date-of-birth">Date of Birth</label>
-                            <input id="date-of-birth" type="text" />
-                        </div>                    
-                    </div>
 
-                    <div className="employee-address">
-                        <label htmlFor="street">Street</label>
-                        <input id="street" type="text" />
+                        <div className="employee-enterprise-information">
+                            <div className="select-wrapper">
+                                <label htmlFor="department">Department</label>
+                                <SelectMenu options={departmentOptions} id="department" name="department" register={register("department")}/>
+                            </div>
+                                       
 
-                        <label htmlFor="city">City</label>
-                        <input id="city" type="text" />
-
-                        <label htmlFor="state">State</label>
-                        <select name="state" id="state"></select>
-
-                        <label htmlFor="zip-code">Zip Code</label>
-                        <input id="zip-code" type="number" />
-                    </div>
-
-                    <div className="employee-enterprise-information">
-                        <label htmlFor="department">Department</label>
-                        <select name="department" id="department">
-                            <option>Sales</option>
-                            <option>Marketing</option>
-                            <option>Engineering</option>
-                            <option>Human Resources</option>
-                            <option>Legal</option>
-                        </select>
-
-                        <div className="input-wrapper">
-                            <label htmlFor="start-date">Start Date</label>
-                            <input id="start-date" type="text" />
+                            <div className="input-wrapper">
+                                <label htmlFor="start-date">Start Date</label>
+                                <DatePicker name="start-date" id="start-date" register={register("startDate")}/>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div><button type='submit'>Save</button></div>
+                    
                 </form>
-
-                <button onClick={onSave}>Save</button>
             </div>
             
         </Container>
@@ -116,7 +130,14 @@ const Container = styled.main`
 
     form{
         display:flex;
+        flex-direction: column;
         justify-content:space-between;
         align-items:center;
     }
+    
+    .form-inputs{
+        display:flex;
+    }
+
+    .input-wrapper
 `

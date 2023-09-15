@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 
-export default function SelectMenu({options, name, id}){
+export default function SelectMenu({options, name, id, register}){
 
 
     return (
-        <select name={name} id={id}>
-            {options.map(option => <option value={option.value}>{option.name}</option> )}
+        <select name={name} id={id} {...register}>
+            {options?.map(option => <option key={option?.name} value={option.value === undefined ? option.name : option.value}>{option?.name}</option> )}
         </select>
     )
 }
