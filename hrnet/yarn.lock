@@ -1791,10 +1791,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@stuart.roch/modal-component-library@^0.1.6":
-  "integrity" "sha512-oI4Z0wjRZY4MO91Jv3PWPs/psSja+KSRpzIedTPjmUxLA21WiOmXqGn4xlZuevxrSpd/3/tzJ1cEfUAyHYhL3w=="
-  "resolved" "https://registry.npmjs.org/@stuart.roch/modal-component-library/-/modal-component-library-0.1.6.tgz"
-  "version" "0.1.6"
+"@stuart.roch/modal-component-library@^0.1.9":
+  "integrity" "sha512-joXFmGoqpXLF1UJaau4mq+kv2tlwWVuFMvq1YIsLjt4UU58HOZll18uk8JUvapFh5rNKooLcD3LbZr0t4c0lBg=="
+  "resolved" "https://registry.npmjs.org/@stuart.roch/modal-component-library/-/modal-component-library-0.1.9.tgz"
+  "version" "0.1.9"
 
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   "integrity" "sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ=="
@@ -7842,6 +7842,11 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   "version" "6.0.11"
 
+"react-hook-form@^7.46.2":
+  "integrity" "sha512-x1DWmHQchV7x2Rq9l99M/cQHC8JGchAnw9Z0uTz5KrPa0bTl/Inm1NR7ceOARfIrkNuQNAhuSuZPYa6k7QYn3Q=="
+  "resolved" "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.46.2.tgz"
+  "version" "7.46.2"
+
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -7949,7 +7954,7 @@
   optionalDependencies:
     "fsevents" "^2.3.2"
 
-"react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^18.0.0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.3", "react@>=16.8":
+"react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", "react@^18.0.0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.3", "react@>=16.8":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

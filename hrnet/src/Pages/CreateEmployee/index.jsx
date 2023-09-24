@@ -6,7 +6,7 @@ import SelectMenu from '../../Components/SelectMenu'
 import { departmentOptions, statesOptions } from "../../utils/variables"
 import { useDispatch, useSelector } from 'react-redux'
 import { addEmployeeAction } from '../../features/employee'
-import Modal from '@stuart.roch/modal-component-library'
+import Modal from "@stuart.roch/modal-component-library"
 
 export default function CreateEmployee(){
 
@@ -17,13 +17,13 @@ export default function CreateEmployee(){
 
     const onSubmit = (data) => {
         setOpenModal(true)
-        //dispatch(addEmployeeAction({...data, id: countEmployeeCreated}))
+        dispatch(addEmployeeAction({...data, id: countEmployeeCreated}))
         //setCountEmployeeCreated(countEmployeeCreated + 1)
     }
     
     return (
         
-        <Container openModal={openModal}>
+        <Container $openModal={openModal}>
             <div className="form-wrapper">
                 <div className="form-header">
                     <h2>Create an employee</h2>
@@ -115,7 +115,7 @@ const Container = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    opacity: ${({openModal}) => openModal ? 0.3 : 1};
+    opacity: ${(props) => props.$openModal ? 0.3 : 1};
     
 
     .form-wrapper{
