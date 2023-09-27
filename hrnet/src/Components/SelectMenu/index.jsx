@@ -1,6 +1,3 @@
-import styled from 'styled-components'
-
-
 export default function SelectMenu({options, name, id, register}){
 
 

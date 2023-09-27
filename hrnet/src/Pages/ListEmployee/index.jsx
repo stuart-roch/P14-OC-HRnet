@@ -2,12 +2,16 @@ import DataTable from "react-data-table-component"
 import { columnsTable } from "../../utils/variables";
 import { useSelector } from "react-redux"
 import styled from "styled-components"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ListEmployee(){
 
     const datas = useSelector(state => state.employee.employee)
     const [data, setData] = useState(datas)
+
+    useEffect(() => {
+        document.title = "List Employee - HRnet"
+    }, [])
 
     const onChange = (e) => {
         setData(datas.filter((data) => data?.firstName?.toLowerCase().includes(e.target.value.toLowerCase()) || 
@@ -44,6 +48,8 @@ const Container = styled.div`
 
     .rdt_TableHeader{
         text-align: center;
+        font-size: 3rem;
+        margin-bottom: 50px;
     }
 
 `
